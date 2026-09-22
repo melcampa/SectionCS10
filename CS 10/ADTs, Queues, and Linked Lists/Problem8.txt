@@ -1,0 +1,15 @@
+The queue’s linked list, earlier in this lecture, 
+doesn’t use a sentinel, even though a sentinel would eliminate 
+the empty-queue edge case in Problem 6. In a few sentences, explain why 
+a sentinel is worth its overhead for a general list but not for a queue.
+
+A sentinel node is beneficial for a general linked list because it simplifies 
+the implementation by eliminating edge cases, such as inserting or deleting 
+nodes at the head or tail of the list. It provides a consistent point of reference, 
+making operations like traversal and modification easier to manage. However, for 
+a queue, which primarily operates on a first-in-first-out (FIFO) basis, the overhead 
+of maintaining a sentinel node is not justified. The queue's operations (enqueue 
+and dequeue) are straightforward and do not require the additional complexity that 
+a sentinel would introduce, as there are no frequent insertions or deletions in the 
+middle of the structure. Thus, the simplicity of a non-sentinel implementation is 
+preferred for queues.

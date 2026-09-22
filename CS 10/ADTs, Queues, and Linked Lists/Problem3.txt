@@ -1,0 +1,21 @@
+6 5 4 3
+5 # # 2
+4 # 0 1
+3 2 1 2
+
+Start at T with distance 0, then repeatedly label every unlabeled open neighbor 
+with the distance + 1.
+
+0: T
+1: the squares right of and below T. The other two neighbors are walls.
+2: the squares above and below-right, and the one left of the distance-1 square 
+in the bottom row.
+3: top-right corner and bottom-left corner
+4: the two squares next to those corners, going around the wall
+5: the next two squares
+6: top-left corner, reached from both directions at once
+
+Which square is farther than it looks?
+
+The top-left corner has the largest distance overall at 6, against a Manhattan 
+distance of 4, but the two squares above are the biggest jump in relative terms.

@@ -1,0 +1,28 @@
+QUESTION: 
+Suppose dequeue were implemented as return self.data.pop(0), 
+on a plain Python list self.data. What is the worst-case running 
+time of this dequeue, and why? Name one built-in Python structure 
+and one from-scratch data structure, both covered in this lecture, 
+that avoid this cost.
+
+ANSWER:
+Think of a list as people standing in numbered spots, and pop(0) as the first 
+person leaving.
+
+spots:   0  1  2  3  4
+list:   [A, B, C, D, E]
+
+pop(0) removes A, leaving a gap at spot 0:
+
+spots:   0  1  2  3  4
+        [_, B, C, D, E]
+
+Spot 0 must hold the front of the line, so everyone shifts left:
+
+spots:   0  1  2  3  4
+        [B, C, D, E]
+
+B, C, D, and E all had to move, which is 4 moves for 5 items. 
+With 1,000,000 items, one pop(0) means about 1,000,000 moves. 
+That's what O(n) means: the work grows with the size of the list.
+

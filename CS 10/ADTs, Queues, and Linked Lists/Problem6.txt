@@ -1,0 +1,44 @@
+Suppose LinkedQueue.dequeue were written without its last two lines 
+— never touching back at all. A queue has exactly one node in it: 
+front and back both reference it. Trace through calling dequeue() 
+once, then enqueue(5). What does back reference after the dequeue() 
+call, and why would the node enqueue(5) creates never be reachable 
+by any later call to dequeue?
+
+Let's analyze the situation step by step:
+1. Initially, the queue has one node, and both front and back reference 
+this node.
+
+START: one node in the queue
+
+   front ---------> [ X ]
+                      ^
+   back --------------+
+
+
+2. When we call dequeue(), the front reference is updated to None (since the queue 
+becomes empty), but the back reference still points to the original node.
+
+2. AFTER dequeue() WITHOUT RESETTING back
+
+   front = None     [ X ]   <- removed
+                      ^
+   back --------------+     <- stale, should be None
+
+3. After the dequeue() call, back still references the original node, which 
+is now disconnected from the queue (since front is None).
+
+4. When we call enqueue(5), a new node is created for the value 5, 
+and back is updated to reference this new node. However, the 
+original node that back was referencing after the dequeue() call
+is now unreachable because there are no references to it from either front 
+or back.
+
+3. AFTER enqueue(5)
+
+   front = None     [ X ] --next--> [ 5 ]   <- unreachable
+                                      ^
+   back ------------------------------+
+
+Therefore, the original node is effectively lost and cannot be accessed by 
+any future calls to dequeue() or any other queue operations.

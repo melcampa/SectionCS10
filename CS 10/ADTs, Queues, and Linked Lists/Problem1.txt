@@ -1,0 +1,20 @@
+QUESTION:
+In a sentence or two, explain the difference between an abstract data type 
+and a data structure. Use the queue ADT and DequeQueue as your example: 
+if DequeQueue were reimplemented using a different underlying structure,
+what would change, and what would stay the same, for code that uses it?
+
+
+ANSWER:
+An abstract data type (ADT) defines a set of operations and behaviors without 
+specifying how they are implemented, while a data structure is a concrete 
+implementation of an ADT that organizes and stores data. 
+
+For example, the queue ADT specifies operations like enqueue and dequeue, 
+while DequeQueue is a specific implementation of this ADT using a deque. 
+
+If DequeQueue were reimplemented using a different underlying structure, 
+such as a linked list instead of a deque, the underlying implementation 
+details would change, but the interface and behavior defined by the queue ADT 
+(like the order of elements and the operations available) would remain the same 
+for code that uses it.
